@@ -18,7 +18,7 @@ use App\Http\Controllers\RegistrationPageController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 //login
@@ -30,7 +30,7 @@ Route::get('/logout',[LoginPageController::class,'logout'])->name('logout');
 //registration
 Route::get('/registration', [RegistrationPageController::class, 'registration'])->name('registration');
 Route::post('/registration', [RegistrationPageController::class, 'registrationsubmit'])->name('registration');
-//registration
+//registrationg
 
 Route::get('/home', [HomePageController::class, 'home'])->name('home')->middleware('ValideUser');
 
