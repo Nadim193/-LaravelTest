@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Customer;
-use App\Models\CustomerLogin;
-use Facade\FlareClient\View;
+use App\Models\Admin;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
-class LoginPageController extends Controller
+class AdminController extends Controller
 {
-    public function login(){
-        return View('login');
+    public function home(){
+        return view('admin.home');
     }
 
     public function loginsubmit(Request $request){
@@ -26,12 +23,12 @@ class LoginPageController extends Controller
             // $uname = Session('uname');
             // $password = Session('password');
 
-            $customers = Customer::where('username',$request->username)
+            $admins = Admin::where('username',$request->username)
             ->where('password',$request->lpassword)
             ->first();
 
 
-            if($customers){
+            if($admins){
                 session()->put('user',$request->username);
                 return redirect()->route('home');
             }

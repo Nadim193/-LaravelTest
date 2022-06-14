@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginPageController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RegistrationPageController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +48,13 @@ Route::get('/aboutus', [HomePageController::class, 'aboutus'])->name('aboutus');
 Route::get('/contactusus', [HomePageController::class, 'contactus'])->name('contactus');
 Route::post('/contactusus', [HomePageController::class, 'contactussubmit'])->name('contactus');
 //End contact us
+
+//admin
+Route::get('/admin.home', [AdminController::class, 'home'])->name('home')->middleware('ValideUser');
+Route::post('/login', [AdminController::class, 'loginsubmit'])->name('login');
+Route::get('/logout',[AdminController::class,'logout'])->name('logout');
+//end admin login
+
+
+//profile
+Route::get('/profile', [ProfileController::class, 'profile'])->name('profile')->middleware('ValideUser');

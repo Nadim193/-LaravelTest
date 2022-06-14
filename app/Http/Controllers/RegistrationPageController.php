@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Facade\FlareClient\View;
+use DB;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -29,8 +30,26 @@ class RegistrationPageController extends Controller
 
         if($validate){
 
-            session()->put('uname', $request->uname);
-            session()->put('password', $request->password);
+           $uname = $request->uname;
+           $fname = $request->fname;
+           $lname = $request->lname;
+           $password = $request->password;
+           $email = $request->email;
+           $phone = $request->Phone;
+
+
+           DB::table('customers')->insert(
+                array(
+
+                    'username' => $uname,
+                    'firstname' => $fname,
+                    'lastname' => $lname,
+                    'emailaddress' => $email,
+                    'password' => $password,
+                    'phone' => $phone
+                )
+
+           );
 
             $success = "Registraion Successfull";
             return redirect()->route('registration')
