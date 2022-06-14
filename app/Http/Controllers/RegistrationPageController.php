@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Facade\FlareClient\View;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;

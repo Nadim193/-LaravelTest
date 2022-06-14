@@ -50,8 +50,8 @@ Route::post('/contactusus', [HomePageController::class, 'contactussubmit'])->nam
 //End contact us
 
 //admin
-Route::get('/admin.home', [AdminController::class, 'home'])->name('home')->middleware('ValideUser');
-Route::post('/login', [AdminController::class, 'loginsubmit'])->name('login');
+Route::get('/admin', [AdminController::class, 'adminhome'])->name('adminhome')->middleware('ValideUser');
+Route::post('/login', [AdminController::class, 'adminloginsubmit'])->name('login');
 Route::get('/logout',[AdminController::class,'logout'])->name('logout');
 //end admin login
 

@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function home(){
+    public function adminhome(){
         return view('admin.home');
     }
 
-    public function loginsubmit(Request $request){
+    public function adminloginsubmit(Request $request){
         $validate = $request->validate([
             "username"=>"required|min:5|max:10",
             "lpassword"=>'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/'
@@ -30,7 +30,7 @@ class AdminController extends Controller
 
             if($admins){
                 session()->put('user',$request->username);
-                return redirect()->route('home');
+                return redirect()->route('adminhome');
             }
             else{
                 $error = "Username and Password Incorect. Try Again";

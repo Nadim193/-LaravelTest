@@ -7,7 +7,7 @@
     <title>Admin Home Page</title>
 </head>
 <body>
-    @extends('layouts.app')
+    @extends('admin.layouts.adminapp')
         @section('content')
             <br>
             <p>This is a Admin home page..</p>
